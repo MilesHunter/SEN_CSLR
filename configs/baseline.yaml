@@ -1,10 +1,10 @@
 feeder: dataset.dataloader_video.BaseFeeder
 phase: train
-dataset: phoenix2014  #phoenix2014, CSL-Daily, CSL, phoenix2014-T
+dataset: CSL  #phoenix2014, CSL-Daily, CSL, phoenix2014-T
 # dataset: phoenix14-si5
 num_epoch: 80
 python_evaluate: False
-work_dir: ./work_dir/baseline_res18/
+work_dir: /hy-tmp/SEN_CSLR/work_dir/csl_baseline_res18/
 batch_size: 2
 random_seed: 0
 test_batch_size: 2
