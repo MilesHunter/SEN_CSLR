@@ -189,7 +189,7 @@ class BaseFeeder(data.Dataset):
             return padded_video, video_length, padded_label, label_length, info
 
     def __len__(self):
-        return len(self.inputs_list) - 1
+        return len(self.inputs_list)
 
     def record_time(self):
         self.cur_time = time.time()

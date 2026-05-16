@@ -65,8 +65,14 @@ def seq_eval(cfg, loader, model, device, mode, epoch, work_dir, recoder):
         with torch.no_grad():
             ret_dict = model(vid, vid_lgt, label=label, label_lgt=label_lgt)
 
-        total_info += [file_name.split("|")[0] for file_name in data[-1]]
-        total_sent += ret_dict['recognized_sents']
+        batch_info = list(data[-1])
+        batch_sent = list(ret_dict['recognized_sents'])
+        batch_pairs = sorted(
+            zip(batch_info, batch_sent),
+            key=lambda x: x[0].split("|")[0]
+        )
+        total_info += [file_name.split("|")[0] for file_name, _ in batch_pairs]
+        total_sent += [sent for _, sent in batch_pairs]
         #for i in range(vid.size(0)):
         #    save_file[data[-1][i].split("|")[0]] = ret_dict['framewise_features'][i].cpu().numpy()
     try:
